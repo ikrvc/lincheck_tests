@@ -6,18 +6,27 @@ import org.junit.Test
 
 class DoubleArrayEasyTest {
 
-    private val doubleArray: DoubleArray = DoubleArray(1)
-    private var myDouble: Double = 0.0
     private var myInt: Int = 0
+    private var myBool: Boolean = false
 
     @Operation
-//    fun set(double: Double) { this.doubleArray[0] = double }
-//    fun set(double: Double) { myDouble = double }
-    fun set(i: Int) { myInt = i }
+    fun set() {
+        if(myBool) {
+            myBool = false
+            myInt = 1
+        }
+        else{
+            myBool = true
+            myInt = 0
+        }
+    }
 
     @Operation
-//    fun get(): Double = doubleArray[0]
-//    fun get(): Double = myDouble
+    fun setBool(bool: Boolean) {
+        myBool = bool
+    }
+
+    @Operation
     fun get(): Int = myInt
 
     @Test
