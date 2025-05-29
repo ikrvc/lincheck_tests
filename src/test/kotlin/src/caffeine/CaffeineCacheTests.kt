@@ -10,6 +10,10 @@ import org.jetbrains.kotlinx.lincheck.strategy.managed.modelchecking.ModelChecki
 import org.jetbrains.kotlinx.lincheck.strategy.stress.StressOptions
 import org.junit.Test
 
+
+/**
+ * General Caffeine cache test
+ */
 @Param(name = "key", gen = IntGen::class, conf = "0:3")
 class CaffeineCacheTests {
 
