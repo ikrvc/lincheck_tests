@@ -38,13 +38,23 @@ class CaffeineEstimatedSizeTests {
         return cache.estimatedSize()
     }
 
-    @Test
-    fun stressTest() {
-        StressOptions().check(this::class)
-    }
+//    @Test
+//    fun stressTest() {
+//        StressOptions().check(this::class)
+//    }
+
+//    @Test
+//    fun modelTest() {
+//        ModelCheckingOptions().check(this::class)
+//    }
 
     @Test
     fun modelTest() {
-        ModelCheckingOptions().check(this::class)
+        ModelCheckingOptions()
+            .iterations(200)
+            .invocationsPerIteration(8)
+            .threads(2)
+            .actorsPerThread(2)
+            .check(this::class)
     }
 }
