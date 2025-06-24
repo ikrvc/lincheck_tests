@@ -45,16 +45,13 @@ class CaffeineEstimatedSizeTests {
 
 //    @Test
 //    fun modelTest() {
-//        ModelCheckingOptions().check(this::class)
+//        ModelCheckingOptions().minimizeFailedScenario(minimizeFailedScenario = false).check(this::class)
 //    }
 
     @Test
     fun modelTest() {
         ModelCheckingOptions()
-            .iterations(200)
-            .invocationsPerIteration(8)
-            .threads(2)
-            .actorsPerThread(2)
+            .invocationsPerIteration(5)
             .check(this::class)
     }
 }

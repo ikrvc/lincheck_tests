@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit
 class CaffeineTimeExpiryTests {
 
     // Fake clock (manual time control)
-//    private val ticker = ManualTicker()
+    private val ticker = ManualTicker()
 
     private val cache: Cache<Int, String> = Caffeine.newBuilder()
         .maximumSize(5)
         .expireAfterWrite(5, TimeUnit.SECONDS)
 //        .expireAfterAccess(3, TimeUnit.SECONDS)
-//        .ticker(ticker)
+        .ticker(ticker)
         .executor(Runnable::run) // synchronous execution
         .build()
 
@@ -33,11 +33,11 @@ class CaffeineTimeExpiryTests {
         return cache.getIfPresent(key)
     }
 
-//    @Operation
-//    fun advanceTime(@Param(name = "key") seconds: Int) {
-//        // We abuse the IntGen for seconds: conf = 0:2 -> 0s, 1s, or 2s
-//        ticker.advance(seconds.toLong(), TimeUnit.SECONDS)
-//    }
+    @Operation
+    fun advanceTime(@Param(name = "key") seconds: Int) {
+        // We abuse the IntGen for seconds: conf = 0:2 -> 0s, 1s, or 2s
+        ticker.advance(seconds.toLong(), TimeUnit.SECONDS)
+    }
 
     @Operation
     fun estimatedSize(): Long {

@@ -20,14 +20,6 @@ import org.junit.BeforeClass
 @Param(name = "key", gen = IntGen::class, conf = "0:3")
 class CaffeineCleanupTests {
 
-    companion object {
-        @JvmStatic
-        @BeforeClass
-        fun enableVerboseLinCheck() {
-            System.setProperty("org.jetbrains.kotlinx.lincheck.verbose", "true")
-        }
-    }
-
     private val cache: Cache<Int, String> = Caffeine.newBuilder()
     .maximumSize(5)
     .executor(Runnable::run) // disables asynchronous behavior

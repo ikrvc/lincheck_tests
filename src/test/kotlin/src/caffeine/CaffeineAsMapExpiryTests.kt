@@ -53,8 +53,7 @@ class CaffeineAsMapExpiryTests {
 
     @Operation
     fun getThenContains(@Param(name = "key") key: Int): Boolean {
-        val v = cache.asMap()[key]
-        return if (v != null) cache.asMap().containsKey(key) else true //If the value was null, we don't care what containsKey() returns then we just return true to avoid false positives.
+        return if (cache.asMap()[key] != null) cache.asMap().containsKey(key) else true //If the value was null, we don't care what containsKey() returns then we just return true to avoid false positives.
     }
 
     @Test
